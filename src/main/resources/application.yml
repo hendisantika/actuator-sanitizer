@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: actuator-sanitizer
+server:
+  port: 8080
+
+test:
+  password: 123
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    env:
+      show-values: always
