@@ -1,5 +1,46 @@
 # actuator-sanitizer
 
+What Is an Actuator
+In essence, Actuator brings production-ready features to our application. Actuator is mainly used to expose operational
+information about the running application — health, metrics, info, dump, env, etc. It uses HTTP endpoints or JMX beans
+to enable us to interact with it.
+
+Actuator comes with most endpoints disabled, the only two available by default are /health and /info. In the example, we
+will expose all endpoints.
+
+```shell
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+```
+
+After Springboot 3, all values are masked with “*” under actuator endpoint by default.
+
+Values can be showed by setting management.endpoint.env.show-values to always in application.yml.
+
+```shell
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    env:
+      show-values: always
+```
+
+### Sanitize Function
+
+What if we don’t want to show sensitive data like password or secret? Then sanitize function comes into play.
+
+A sanitizingFunction interface needs to be implemented, and apply whatever logic fits your use cases in the apply
+method. In the following example, all fields other than password and secret will be showed in plain text while password
+and secret will be masked with “*”, and additional keys can be set by management.endpoint.additionalKeysToSanitize
+
+Now if we hit the /actuator/env endpoint, only test.password is masked with “*”
+
 ### Things todo list
 
 1. Clone this repository: `git clone https://github.com/hendisantika/actuator-sanitizer.git`
