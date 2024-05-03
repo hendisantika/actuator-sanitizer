@@ -1,6 +1,11 @@
 # actuator-sanitizer
 
-http://localhost:8080/actuator/env
+### Things todo list
+
+1. Clone this repository: `git clone https://github.com/hendisantika/actuator-sanitizer.git`
+2. Navigate to the folder: `cd actuator-sanitizer`
+3. Run the application: `mvn clean spring-boot:run`
+4. Open your favorite browser: http://localhost:8080/actuator/env
 
 Before enable ENV values
 
